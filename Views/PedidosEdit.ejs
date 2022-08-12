@@ -1,0 +1,69 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Pedido <%= dados.pedido.id %> - <%= dados.pedido.nome %></h2>
+            
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Peso Líquido</th>
+                        <th>Peso Unitário</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <% dados.pedidoProdutos.forEach(pedidoProduto => { %>
+                        <tr>
+                            <td><%= pedidoProduto.descricao %></td>
+                            <td><%= pedidoProduto.peso_liquido %></td>
+                            <td><%= pedidoProduto.peso_unitario %></td>
+                            <td>
+                                <form method="post" action="/pedidoProdutos/delete" style="display: inline">
+                                    <input type="hidden" name="id_produto" value="<%= pedidoProduto.id %>">
+                                    <input type="hidden" name="id_pedido" value="<%= dados.pedido.id %>">
+                                    <button class="btn btn-danger" type="submit">Remover</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Peso Líquido</th>
+                        <th>Peso Unitário</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% dados.produtos.forEach(produto => { %>
+                        <tr>
+                            <td><%= produto.descricao %></td>
+                            <td><%= produto.peso_liquido %></td>
+                            <td><%= produto.peso_unitario %></td>
+                            <td>
+                                <form method="post" action="/pedidoProdutos/save" style="display: inline">
+                                    <input type="hidden" name="id_produto" value="<%= produto.id %>">
+                                    <input type="hidden" name="id_pedido" value="<%= dados.pedido.id %>">
+                                    <button class="btn btn-success" type="submit">Adicionar</button>
+                                </form>                            
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>

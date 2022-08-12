@@ -1,0 +1,44 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+<div class="container">
+    <h2>Pedido</h2>
+    <a href="/pedidos/new" class="btn btn-success">Inserir Pedido</a>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>N° Pedido</th>
+                <th>Cliente</th>
+                <th>Emissão</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% pedidos.forEach(pedido => { %>
+                <tr>
+                    <td><%= pedido.id %></td>
+                    <td><%= pedido.nome %></td>
+                    <td><%= pedido.emissao %></td>
+                    <td>
+                        <a href="/pedidos/edit/<%= pedido.id %> " class="btn btn-warning">Editar</a>
+                        <form method="post" action="/pedidos/delete" style="display: inline"
+                            onsubmit="confirmDelete(event,this);">
+                            <input type="hidden" name="id" value="<%= pedido.id %>">
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include('partials/footer.ejs') %>
+<script>
+    function confirmDelete(event, form){
+        event.preventDefault();
+        var decision = confirm("Você quer deletar este pedido?");
+        if(decision){
+            form.submit();
+        }
+    }
+</script>

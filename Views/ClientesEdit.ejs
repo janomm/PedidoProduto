@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Editar Cliente</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/clientes/update">
+                <input class="form-control" type="hidden" required name="id" value="<%= cliente.id %>"><br> 
+                <input class="form-control" type="text" name="nome" placeholder="Nome" value="<%= cliente.nome %>"><br> 
+                <input class="form-control" type="text" onblur="buscaCep(this)" name="cep" placeholder="CEP" value="<%= cliente.cep %>"><br> 
+                <input class="form-control" type="text" id="logradouro" name="logradouro" placeholder="Logradouro" value="<%= cliente.logradouro %>"><br> 
+                <input class="form-control" type="text" id="bairro" name="bairro" placeholder="Bairro" value="<%= cliente.bairro %>"><br> 
+                <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade" value="<%= cliente.cidade %>"><br> 
+                <input class="form-control" type="text" id="uf" name="uf" placeholder="UF" value="<%= cliente.uf %>"><br> 
+                <input class="form-control" type="text" id="ibge" name="ibge" placeholder="Código IBGE" value="<%= cliente.ibge %>"><br> 
+                <button class="btn btn-success">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>
+<%- include('partials/scripts.ejs') %>

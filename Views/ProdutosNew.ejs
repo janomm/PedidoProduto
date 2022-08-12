@@ -1,0 +1,19 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Novo Produto</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/produtos/save">
+                <input class="form-control" type="text" name="descricao" placeholder="Descricao"><br> 
+                <input class="form-control" type="text" name="peso_liquido" placeholder="Peso Líquido"><br> 
+                <input class="form-control" type="text" name="peso_unitario" placeholder="Peso Unitário"><br> 
+                <button class="btn btn-success">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>

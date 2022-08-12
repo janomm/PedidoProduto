@@ -1,0 +1,23 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Novo Pedido</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/pedidos/save">
+                <select class="form-control" name="cliente">
+                    <option value="0">Selecione Cliente</option>
+                    <% clientes.forEach(cliente => { %>
+                        <option value="<%= cliente.id %>"><%= cliente.nome %></option>
+                    <% }) %>
+                </select><br>
+                
+                <button class="btn btn-success">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>

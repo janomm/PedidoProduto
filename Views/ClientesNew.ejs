@@ -1,0 +1,24 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Novo Cliente</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/clientes/save">
+                <input class="form-control" type="text" required name="nome" placeholder="Nome"><br> 
+                <input class="form-control" type="text" onblur="buscaCep(this)" name="cep" placeholder="CEP"><br> 
+                <input class="form-control" type="text" id="logradouro" name="logradouro" placeholder="Logradouro"><br> 
+                <input class="form-control" type="text" id="bairro" name="bairro" placeholder="Bairro"><br> 
+                <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade"><br> 
+                <input class="form-control" type="text" id="uf" name="uf" placeholder="UF"><br> 
+                <input class="form-control" type="text" id="ibge" name="ibge" placeholder="Código IBGE"><br> 
+                <button class="btn btn-success">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>
+<%- include('partials/scripts.ejs') %>
